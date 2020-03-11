@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+{% block title %} Popis automata za igranje {% endblock %}
+{% block body %}
+<div class="container">
+   <div class="row">
+       <a href="{{absolute_url(asset(''))}}game/machines/create" class="btn btn-primary">Kreiraj automat</a>
+   </div>
+{% if gamemachines %}
+   <br></br>
+   <table class="table table-striped">
+   <thead>
+   <tr>
+   <th>ID</th>
+   <th>Naziv automata</th>
+   <th>Serijski broj automata</th>
+   <th>Garancija automata</th>
+   <th>Vrsta igre</th>
+   <th>Mogućnosti</th>
+   </tr>
+   </thead>
+   <tbody>
+   {% for gamemachine in gamemachines %} 
+   <tr>
+   <td>{{ gamemachine.id }}</td>
+   <td>{{ gamemachine.name }}</td>
+   <td>{{ gamemachine.serialnumber }}</td>
+   <td>{{ gamemachine.endofguaranteedate|date('Y-m-d H:i:s') }}</td>
+   <td>{{ gamemachine.gametypeid}}</td>
+   <td>
+      <a href="{{ absolute_url(asset('')) }}game/machines/view/{{gamemachine.id}}" class="btn btn-primary btn-sm">Prikaži</a>
+      <a href="{{ absolute_url(asset('')) }}game/machines/delete/{{gamemachine.id}}" class="btn btn-danger btn-sm">Obriši</a>
+   </td>
+   </tr>
+   {% endfor %}
+   </tbody>
+   <table>
+{% else %}  
+<p>Nema automata za prikaz</p>
+{% endif %}
+{% endblock %}

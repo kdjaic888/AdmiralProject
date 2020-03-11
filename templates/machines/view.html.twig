@@ -1,0 +1,17 @@
+{% extends 'base.html.twig' %}
+{% block title %} Pregled automata za igranje {% endblock %}
+{% block body %}
+<div class="container">
+<div class="list-group">
+  <a href="#" class="list-group-item active">
+    Pregled automata
+  </a>
+  <p class="list-group-item">{{prikaz.id}}</p>
+  <p class="list-group-item">{{prikaz.name}}</p>
+  <p class="list-group-item">{{prikaz.serialnumber}}</p>
+  <p class="list-group-item">{{prikaz.endofguaranteedate|date('Y-m-d H:i:s')}}</p>
+  <p class="list-group-item">{{prikaz.gametypeid}}</p>
+  <p class="list-group-item"><a href="{{ absolute_url(asset('')) }}game/machines" class="btn btn-primary">Nazad</a></p>
+</div>
+</div>
+{% endblock %}

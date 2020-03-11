@@ -1,0 +1,23 @@
+{% extends 'base.html.twig' %}
+{% block title %} Vrste igara za igranje {% endblock %}
+
+{% block body %}
+{% if gametypes %}
+   <table class="table table-striped">
+   <thead>
+   <tr>
+   <th>Naziv igrice</th>
+   </tr>
+   </thead>
+   <tbody>
+   {% for gametype in gametypes %} 
+   <tr>
+   <td>{{ gametype.name }}</td>
+   </tr>
+   {% endfor %}
+   </tbody>
+   <table>
+{% else %}  
+<p>Nema igara za prikaz</p>
+{% endif %}
+{% endblock %}
